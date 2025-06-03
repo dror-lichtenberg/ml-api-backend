@@ -1,0 +1,42 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Environment variables and logs
+.env
+*.log
+
+# Python tools
+.mypy_cache/
+.pytest_cache/
+coverage.xml
+htmlcov/
+
+# Jupyter and notebooks
+*.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# Frontend dependencies and builds
+/frontend/node_modules/
+frontend/dist/
+
+# Frontend build artifacts
+frontend/.vite/
+frontend/.parcel-cache/
+frontend/build/
+frontend/coverage/
+
+# OS / Misc
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel/

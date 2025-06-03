@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pycaret==3.3.2
+joblib
+pydantic
+scikit-learn>=1.0
