@@ -12,7 +12,8 @@ log("info", "🔥 Starting ML API Backend...")
 app = FastAPI(
     title="ML API Backend",
     description="Scalable FastAPI backend for multiple ML models",
-    version="0.1.0"
+    version="0.1.0",
+    openapi_version="3.1.0"
 )
 
 # Configure CORS

@@ -78,7 +78,7 @@ export const App: React.FC = () => {
           <Link to="/" className="font-bold text-lg">ML API Dashboard</Link>
           <div className="space-x-4 flex items-center">
             <a href="/docs" className="hover:underline" target="_blank" rel="noreferrer">Docs</a>
-            <a href="/models" className="hover:underline">Models API</a>
+            <a href="/models" className="hover:underline" target="_blank" rel="noreferrer">Models API</a>
             <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="border rounded px-2 py-1">
               {theme === 'dark' ? '🌞' : '🌙'}
             </button>
