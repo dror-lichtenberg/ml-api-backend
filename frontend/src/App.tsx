@@ -77,7 +77,7 @@ export const App: React.FC = () => {
         <nav className="px-4 py-3 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
           <Link to="/" className="font-bold text-lg">ML API Dashboard</Link>
           <div className="space-x-4 flex items-center">
-            <a href="/docs" className="hover:underline">Docs</a>
+            <a href="/docs" className="hover:underline" target="_blank" rel="noreferrer">Docs</a>
             <a href="/models" className="hover:underline">Models API</a>
             <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="border rounded px-2 py-1">
               {theme === 'dark' ? '🌞' : '🌙'}
