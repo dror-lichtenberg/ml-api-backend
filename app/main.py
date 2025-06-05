@@ -25,9 +25,9 @@ app.add_middleware(
 )
 
 # Register models
-log("info", "🔍 About to register income model...")
-register_model(app=app, model_name="income", route_module=predict_income, endpoint="predict_income")
-log("info", "✅ Income model registered!")
+log("info", "🔍 About to register predict_income model...")
+register_model(app=app, model_name="predict_income", route_module=predict_income, endpoint="predict_income")
+log("info", "✅ predict_income model registered!")
 
 @app.get("/models")
 def list_models():

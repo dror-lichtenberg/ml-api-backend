@@ -7,20 +7,36 @@ interface Props {
 export const ModelPage: React.FC<Props> = ({ model }) => {
   const [input, setInput] = useState<any>(model.example_input);
   const [result, setResult] = useState<any>(null);
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const validValues: Record<string, string[]> = model.valid_values || {};
 
   const handleChange = (key: string, value: any) => {
     setInput({ ...input, [key]: value });
   };
 
+  const showToast = (message: string, type: 'success' | 'error') => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  };
+
   const handleSubmit = async () => {
-    const res = await fetch(model.endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(input),
-    });
-    const json = await res.json();
-    setResult(json);
+    setResult(null);
+    try {
+      const res = await fetch(model.endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(input),
+      });
+      const json = await res.json();
+      setResult(json);
+      if (res.ok) {
+        showToast('Done - OK', 'success');
+      } else {
+        showToast(`Done - Error (${res.status})`, 'error');
+      }
+    } catch (e) {
+      showToast('Done - Error', 'error');
+    }
   };
 
   const renderField = (key: string, def: any) => {
@@ -68,6 +84,15 @@ export const ModelPage: React.FC<Props> = ({ model }) => {
         <pre className="bg-gray-100 dark:bg-gray-800 p-2 rounded overflow-auto text-sm">
 {JSON.stringify(result, null, 2)}
         </pre>
+      )}
+      {toast && (
+        <div
+          className={`fixed bottom-4 right-4 px-4 py-2 rounded text-white ${
+            toast.type === 'success' ? 'bg-green-600' : 'bg-red-600'
+          }`}
+        >
+          {toast.message}
+        </div>
       )}
     </div>
   );
