@@ -17,20 +17,20 @@ except Exception as e:
 
 # Input schema using model's original column names (with hyphens)
 class IncomeInput(BaseModel):
-    age: int
-    fnlwgt: int
-    education_num: int = Field(alias="education-num")
-    capital_gain: int = Field(alias="capital-gain")
-    capital_loss: int = Field(alias="capital-loss")
-    hours_per_week: int = Field(alias="hours-per-week")
-    workclass: str
-    education: str
-    marital_status: str = Field(alias="marital-status")
-    occupation: str
-    relationship: str
-    race: str
-    sex: str
-    native_country: str = Field(alias="native-country")
+    age: int = 50
+    fnlwgt: int = 77516
+    education_num: int = Field(14, alias="education-num")
+    capital_gain: int = Field(2174, alias="capital-gain")
+    capital_loss: int = Field(0, alias="capital-loss")
+    hours_per_week: int = Field(45, alias="hours-per-week")
+    workclass: str = "State-gov"
+    education: str = "Masters"
+    marital_status: str = Field("Married-civ-spouse", alias="marital-status")
+    occupation: str = "Exec-managerial"
+    relationship: str = "Husband"
+    race: str = "White"
+    sex: str = "Male"
+    native_country: str = Field("United-States", alias="native-country")
 
     class Config:
         allow_population_by_field_name = True
@@ -53,19 +53,19 @@ MODEL_METADATA = {
     "input_schema": IncomeInput.schema(),
     "output_schema": {"prediction": "List[str]"},
     "example_input": {
-        "age": 39,
+        "age": 50,
         "workclass": "State-gov",
         "fnlwgt": 77516,
-        "education": "Bachelors",
-        "education-num": 13,
-        "marital-status": "Never-married",
-        "occupation": "Adm-clerical",
-        "relationship": "Not-in-family",
+        "education": "Masters",
+        "education-num": 14,
+        "marital-status": "Married-civ-spouse",
+        "occupation": "Exec-managerial",
+        "relationship": "Husband",
         "race": "White",
         "sex": "Male",
         "capital-gain": 2174,
         "capital-loss": 0,
-        "hours-per-week": 40,
+        "hours-per-week": 45,
         "native-country": "United-States"
     },
     "valid_values": {
