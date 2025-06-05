@@ -13,6 +13,7 @@ def register_model(app, model_name, route_module, prefix="/api", endpoint=None):
             "input_schema": route_module.MODEL_METADATA["input_schema"],
             "output_schema": route_module.MODEL_METADATA["output_schema"],
             "example_input": route_module.MODEL_METADATA["example_input"],
+            "valid_values": route_module.MODEL_METADATA.get("valid_values"),
         }
     except Exception as e:
         raise
@@ -29,6 +30,7 @@ def get_all_model_metadata():
                 "input_schema": meta["input_schema"],
                 "output_schema": meta["output_schema"],
                 "example_input": meta["example_input"],
+                "valid_values": meta.get("valid_values"),
             }
         except Exception as e:
             print(f"❌ Failed to serialize metadata for model '{name}': {e}")

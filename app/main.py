@@ -12,7 +12,8 @@ log("info", "🔥 Starting ML API Backend...")
 app = FastAPI(
     title="ML API Backend",
     description="Scalable FastAPI backend for multiple ML models",
-    version="0.1.0"
+    version="0.1.0",
+    openapi_version="3.1.0"
 )
 
 # Configure CORS
@@ -25,9 +26,9 @@ app.add_middleware(
 )
 
 # Register models
-log("info", "🔍 About to register income model...")
-register_model(app=app, model_name="income", route_module=predict_income, endpoint="predict_income")
-log("info", "✅ Income model registered!")
+log("info", "🔍 About to register predict_income model...")
+register_model(app=app, model_name="predict_income", route_module=predict_income, endpoint="predict_income")
+log("info", "✅ predict_income model registered!")
 
 @app.get("/models")
 def list_models():
